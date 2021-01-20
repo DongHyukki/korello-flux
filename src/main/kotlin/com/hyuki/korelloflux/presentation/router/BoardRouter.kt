@@ -1,25 +1,28 @@
 package com.hyuki.korelloflux.presentation.router
 
+import com.hyuki.korelloflux.domain.BoardHandler
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.web.reactive.function.server.RouterFunction
-import org.springframework.web.reactive.function.server.ServerResponse
-import org.springframework.web.reactive.function.server.bodyValueAndAwait
-import org.springframework.web.reactive.function.server.coRouter
+import org.springframework.http.MediaType.APPLICATION_JSON
+import org.springframework.web.reactive.function.server.*
 
 @Configuration
-class BoardRouter {
+class BoardRouter(
+    private val boardHandler: BoardHandler
+) {
 
     @Bean
     fun boardRoutes(): RouterFunction<ServerResponse> {
         return coRouter {
-            GET("/api/v1/events/board/{id}") { serverRequest ->
-                val boardId = serverRequest.pathVariable("id").toLong()
-
-                ok().bodyValueAndAwait(boardId)
+            accept(APPLICATION_JSON).nest {
+                GET("/api/v1/events/board/{id}", boardHandler::getEventsByBoardId)
+                POST("/api/v1/events/board", boardHandler::saveBoardEvents)
             }
         }
     }
-
-
 }
+
+data class RequestBoard(
+    val id: Long,
+    val title: String
+)
