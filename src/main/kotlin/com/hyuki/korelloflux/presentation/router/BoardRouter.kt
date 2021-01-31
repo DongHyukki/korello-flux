@@ -1,6 +1,6 @@
 package com.hyuki.korelloflux.presentation.router
 
-import com.hyuki.korelloflux.domain.BoardHandler
+import com.hyuki.korelloflux.presentation.handler.BoardHandler
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.MediaType.APPLICATION_JSON
