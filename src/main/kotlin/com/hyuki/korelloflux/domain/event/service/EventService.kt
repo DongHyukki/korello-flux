@@ -11,7 +11,7 @@ class EventService(
     private val eventRepository: EventRepository
 ) {
 
-    suspend fun findByBoardIdOrderByCreatedDateDesc(boardId: Mono<Long>): Flow<Event> {
+    suspend fun findByBoardIdOrderByCreatedDateDesc(boardId: Mono<String>): Flow<Event> {
         return eventRepository.findByBoardIdOrderByCreatedDateDesc(boardId)
     }
 

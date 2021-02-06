@@ -4,6 +4,7 @@ import com.hyuki.korelloflux.presentation.handler.EventHandler
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.MediaType.APPLICATION_JSON
+import org.springframework.http.MediaType.parseMediaType
 import org.springframework.web.reactive.function.server.*
 import reactor.core.publisher.Mono
 
@@ -19,11 +20,7 @@ class BoardRouter(
                 GET("/api/v1/events/board/{id}", eventHandler::getEventsByBoardId)
                 POST("/api/v1/events/board", eventHandler::saveBoardEvents)
             }
+            accepted().contentType(parseMediaType("application/json;charset=UTF-8"))
         }
     }
 }
-
-data class RequestBoard(
-    val id: Long,
-    val title: String
-)
