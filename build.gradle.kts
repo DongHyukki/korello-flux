@@ -40,6 +40,9 @@ dependencies {
 
     //actuator
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+    //mongo
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 }
 
 tasks.withType<KotlinCompile> {

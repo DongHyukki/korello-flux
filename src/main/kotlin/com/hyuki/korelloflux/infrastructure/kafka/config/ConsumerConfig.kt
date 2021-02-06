@@ -1,4 +1,4 @@
-package com.hyuki.korelloflux.presentation.config
+package com.hyuki.korelloflux.infrastructure.kafka.config
 
 import com.hyuki.korelloflux.presentation.dto.EventDTO
 import org.apache.kafka.clients.consumer.ConsumerConfig
