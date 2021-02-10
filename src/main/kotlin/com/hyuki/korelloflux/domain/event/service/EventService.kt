@@ -11,7 +11,7 @@ class EventService(
     private val eventRepository: EventRepository
 ) {
 
-    suspend fun findByBoardIdOrderByCreatedDateDesc(typeId: Mono<String>, selectType: Mono<String>): Flow<Event> {
+    suspend fun findByTypeIdAndSelectTypeOrderByCreatedDateDesc(typeId: Mono<String>, selectType: Mono<String>): Flow<Event> {
         return eventRepository.findByTypeIdAndSelectTypeOrderByCreatedDateDesc(typeId, selectType)
     }
 

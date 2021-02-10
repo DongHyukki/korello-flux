@@ -6,7 +6,7 @@ import com.hyuki.korelloflux.presentation.dto.type.KorelloEventType
 import com.hyuki.korelloflux.presentation.dto.type.KorelloSelectType
 
 data class EventDTO(
-    val typeId: Long,
+    val id: Long,
     val selectType: KorelloSelectType,
     val eventType: KorelloEventType,
     val action: KorelloActionType,
@@ -15,6 +15,6 @@ data class EventDTO(
     val message: String,
 ) {
     fun toEntity(): Event {
-        return Event(typeId.toString(), selectType.eng_name, eventType.eng_name, action.eng_name, memberId, memberName, message)
+        return Event(id.toString(), selectType.eng_name, eventType.eng_name, action.eng_name, memberId, memberName, message)
     }
 }

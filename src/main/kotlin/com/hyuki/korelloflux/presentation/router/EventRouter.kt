@@ -18,6 +18,7 @@ class BoardRouter(
         return coRouter {
             accept(APPLICATION_JSON).nest {
                 GET("/api/v1/events/board/{id}", eventHandler::getEventsByBoardId)
+                GET("/api/v1/events/card/{id}", eventHandler::getEventsByCardId)
                 POST("/api/v1/events/board", eventHandler::saveBoardEvents)
             }
             accepted().contentType(parseMediaType("application/json;charset=UTF-8"))

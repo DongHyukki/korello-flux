@@ -18,9 +18,16 @@ class EventHandler(
 ) {
     suspend fun getEventsByBoardId(serverRequest: ServerRequest): ServerResponse =
         ok().bodyValueAndAwait(
-            eventService.findByBoardIdOrderByCreatedDateDesc(
+            eventService.findByTypeIdAndSelectTypeOrderByCreatedDateDesc(
                 serverRequest.pathVariable("id").toMono(),
-                serverRequest.queryParam("type").orElse("").toMono()
+                "board".toMono()
+            ).toList())
+
+    suspend fun getEventsByCardId(serverRequest: ServerRequest): ServerResponse =
+        ok().bodyValueAndAwait(
+            eventService.findByTypeIdAndSelectTypeOrderByCreatedDateDesc(
+                serverRequest.pathVariable("id").toMono(),
+                "card".toMono()
             ).toList())
 
     suspend fun saveBoardEvents(serverRequest: ServerRequest): ServerResponse {
