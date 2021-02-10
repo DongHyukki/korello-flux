@@ -19,8 +19,9 @@ class EventHandler(
     suspend fun getEventsByBoardId(serverRequest: ServerRequest): ServerResponse =
         ok().bodyValueAndAwait(
             eventService.findByBoardIdOrderByCreatedDateDesc(
-                serverRequest.pathVariable("id").toMono()).toList())
-
+                serverRequest.pathVariable("id").toMono(),
+                serverRequest.queryParam("type").orElse("").toMono()
+            ).toList())
 
     suspend fun saveBoardEvents(serverRequest: ServerRequest): ServerResponse {
 //        val mono = serverRequest.awaitBody(RequestBoard::class)

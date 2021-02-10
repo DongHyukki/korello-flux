@@ -1,6 +1,5 @@
 package com.hyuki.korelloflux.domain.event.model
 
-import org.bson.types.ObjectId
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate
@@ -11,9 +10,11 @@ import java.time.LocalDateTime
 @Document(collection = "event")
 class Event(
     @Indexed
-    val boardId: String,
+    val typeId: String,
     @Indexed
-    val type: String,
+    val selectType: String,
+    @Indexed
+    val eventType: String,
     val action: String,
     val memberId: Long,
     val memberName: String,

@@ -8,6 +8,5 @@ import reactor.core.publisher.Mono
 
 @Repository
 interface EventRepository : ReactiveMongoRepository<Event, Int> {
-
-    fun findByBoardIdOrderByCreatedDateDesc(boardId: Mono<String>): Flow<Event>
+    fun findByTypeIdAndSelectTypeOrderByCreatedDateDesc(typeId: Mono<String>, selectType: Mono<String>): Flow<Event>
 }
