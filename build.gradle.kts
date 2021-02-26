@@ -43,6 +43,9 @@ dependencies {
 
     //mongo
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
+
+    //Security
+    implementation("org.springframework.boot:spring-boot-starter-security")
 }
 
 tasks.withType<KotlinCompile> {
