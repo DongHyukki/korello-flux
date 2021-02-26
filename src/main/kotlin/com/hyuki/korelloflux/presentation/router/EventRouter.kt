@@ -1,12 +1,13 @@
 package com.hyuki.korelloflux.presentation.router
 
-import com.hyuki.korelloflux.presentation.handler.EventHandler
+import com.hyuki.korelloflux.domain.event.handler.EventHandler
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.MediaType.APPLICATION_JSON
 import org.springframework.http.MediaType.parseMediaType
-import org.springframework.web.reactive.function.server.*
-import reactor.core.publisher.Mono
+import org.springframework.web.reactive.function.server.RouterFunction
+import org.springframework.web.reactive.function.server.ServerResponse
+import org.springframework.web.reactive.function.server.coRouter
 
 @Configuration
 class BoardRouter(

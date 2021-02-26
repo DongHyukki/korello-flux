@@ -6,6 +6,7 @@ import org.springframework.cloud.stream.annotation.EnableBinding
 import org.springframework.cloud.stream.annotation.StreamListener
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate
 import org.springframework.messaging.handler.annotation.Payload
+import reactor.core.publisher.Mono
 import reactor.kotlin.core.publisher.toMono
 
 @EnableBinding(KorelloProcessor::class)
