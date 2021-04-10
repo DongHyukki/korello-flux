@@ -1,11 +1,9 @@
 package com.hyuki.korelloflux.infrastructure.auth.config
 
-import com.hyuki.korelloflux.infrastructure.auth.filter.AuthFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity
-import org.springframework.security.config.web.server.SecurityWebFiltersOrder
 import org.springframework.security.config.web.server.ServerHttpSecurity
 import org.springframework.security.web.server.SecurityWebFilterChain
 import org.springframework.security.web.server.context.ServerSecurityContextRepository
@@ -31,7 +29,7 @@ class AuthConfiguration(
             .anyExchange()
                 .authenticated()
             .and()
-            .build();
+            .build()
     }
 
 }
