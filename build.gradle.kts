@@ -12,7 +12,7 @@ group = "com.hyuki"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
-jib.to.image = "kderr2791/hyuki-flux-app:latest"
+jib.to.image = "kderr2791/korello-flux-app:latest"
 
 repositories {
     mavenCentral()
