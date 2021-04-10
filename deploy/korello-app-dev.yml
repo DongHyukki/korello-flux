@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: korello-flux-app-dev
+  namespace: hyuki-namespace
+  labels:
+    app: korello-flux-app-dev
+spec:
+  selector:
+    matchLabels:
+      app: korello-flux-app-dev
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 50%
+  template:
+    metadata:
+      labels:
+        app: korello-flux-app-dev
+    spec:
+      containers:
+        - name: hyuki-dev
+          image: kderr2791/korello-flux-app:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "1"
+              memory: 0.5Gi
+            requests:
+              cpu: "1"
+              memory: 0.25Gi
+          ports:
+            - containerPort: 8080
+          env:
+            - name: spring_profiles_active
+              value: dev
+            - name: application_name
+              value: korello-flux-app-dev
+            - name: instance_name
+              value: "8080"
+          readinessProbe:
+            httpGet:
+              path: /health_check.html
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health_check.html
+              port: 8080
+            initialDelaySeconds: 180
+            periodSeconds: 5
+          lifecycle:
+            preStop:
+              exec:
+                command: [ "/bin/sleep","2" ]
+      terminationGracePeriodSeconds: 60
+      imagePullSecrets:
+        - name: regcred
