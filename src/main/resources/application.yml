@@ -6,7 +6,7 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: localhost:9092
+          brokers: hyuki.app:9092
           healthTimeout: 20
         bindings:
           input:
