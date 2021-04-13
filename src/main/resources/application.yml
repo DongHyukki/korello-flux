@@ -8,15 +8,15 @@ spring:
         binder:
           brokers: hyuki.app:9092
           healthTimeout: 20
-        bindings:
-          input:
-            destination: korello
-            group: korello
-            consumer:
-              maxAttempts: 3
-              backOffInitialInterval: 500
-              backOffMaxInterval: 1000
-              enableDlq: true
+      bindings:
+        korello:
+          destination: korello
+          group: korello
+          consumer:
+            maxAttempts: 3
+            backOffInitialInterval: 500
+            backOffMaxInterval: 1000
+            enableDlq: true
 
 management:
   endpoints:
