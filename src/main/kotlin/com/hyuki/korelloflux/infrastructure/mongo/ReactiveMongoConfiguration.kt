@@ -24,7 +24,7 @@ class ReactiveMongoConfiguration() : AbstractReactiveMongoConfiguration() {
     }
 
     override fun mongoClientSettings(): MongoClientSettings {
-        val connection = ConnectionString("mongodb://hyuki.app:27017/korello")
+        val connection = ConnectionString("mongodb://hyuki.app:9091/korello")
         return MongoClientSettings.builder().applyConnectionString(connection).build()
     }
 }
